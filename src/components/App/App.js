@@ -2,15 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './App.css';
-// import UsersTable from '';
+import UsersTable from '../UsersTable/UsersTable';
 
 const App = ({ users, isLoading, hasError, loadData }) => (
   <div className="App">
     <h1>Table of users</h1>
 
     {users.length ? (
-      <div></div>
-      // <UsersTable users={users} />
+      <UsersTable users={users} />
     ) : (
       <>
         <h2>{hasError ? 'Error occured!!!' : 'No users yet!'}</h2>

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import UserRow from '../UserRow';
 import Footer from '../Footer';
+import Header from '../Header';
+import { debounce } from '../../helpers/debounce';
 
 const HEADERS = {
   id: 'ID',
@@ -21,7 +23,10 @@ const UsersTable = ({
   usersPerPage,
   setPage,
   setUsersPerPage,
+  setQuery,
 }) => {
+  const [highlightedValue, setHighlightedValue] = useState('');
+
   const sortUsers = (clickedColumn) => {
     if (activeColumn !== clickedColumn) {
       setDirection('asc');
@@ -33,17 +38,45 @@ const UsersTable = ({
 
   const switchPage = (currentPage) => {
     setPage(currentPage);
-  }
+  };
+  const changeUsersPerPage = ($, data) => {
+    setUsersPerPage(data.value);
+    setPage(1);
+  };
+
+  const applySearchWithDebounce = useCallback(
+    debounce((value) => {
+      setQuery(value);
+    }, 500),
+    []
+  );
+
+  const searchUsers = ($, data) => {
+    const value = data.value.toLowerCase()
+      .replace(/[/\\+*()?[\]]/g, '');
+
+    setPage(1);
+    setHighlightedValue(value);
+    applySearchWithDebounce(value);
+  };
 
   const usersAmount = users.length;
   const pagesAmount = Math.ceil(usersAmount / usersPerPage);
   const firstUser = (page - 1) * usersPerPage + 1;
   let lastUser = page * usersPerPage;
   const visibleUsers = users.slice(firstUser - 1, lastUser);
+
   lastUser = lastUser > usersAmount ? usersAmount : lastUser;
 
   return (
     <div>
+      <Header
+        onChangeUsersPerPage={changeUsersPerPage}
+        onSearchUsers={searchUsers}
+        inputValue={highlightedValue}
+        selectValue={usersPerPage}
+      />
+
       <table>
         <thead>
           <tr>
@@ -60,7 +93,11 @@ const UsersTable = ({
 
         <tbody>
           {visibleUsers.map(user => (
-            <UserRow key={user.id} user={user} />
+            <UserRow
+              key={user.id}
+              user={user}
+              highlightedValue={highlightedValue}
+            />
           ))}
         </tbody>
       </table>
@@ -85,6 +122,11 @@ UsersTable.propTypes = {
   direction: PropTypes.string.isRequired,
   setActiveColumn: PropTypes.func.isRequired,
   setDirection: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  usersPerPage: PropTypes.number.isRequired,
+  setPage: PropTypes.func.isRequired,
+  setUsers: PropTypes.func.isRequired,
+  setQuery: PropTypes.func.isRequired,
 };
 
 export default UsersTable;

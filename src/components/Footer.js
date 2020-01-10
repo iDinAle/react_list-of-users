@@ -9,9 +9,9 @@ const Footer = ({
   activePage,
   onSwitchPage,
 }) => {
-  const pageButtons = new Array(pagesAmount).fill(0).map((_, i) => i + 1)
+  const pageButtons = new Array(pagesAmount).fill(0).map((_, i) => i + 1);
   let firstVisiblePage = activePage - 1;
-  let lastVisiblePage = activePage + 1
+  let lastVisiblePage = activePage + 1;
 
   if (activePage === 1) {
     firstVisiblePage = activePage;
@@ -23,7 +23,9 @@ const Footer = ({
     lastVisiblePage = activePage;
   }
 
-  const visiblePageButtons = pageButtons.slice(firstVisiblePage - 1, lastVisiblePage);
+  const visiblePageButtons = pageButtons.slice(
+    firstVisiblePage - 1, lastVisiblePage
+  );
 
   return (
     <div className="table-options">
@@ -50,7 +52,7 @@ const Footer = ({
           {'<'}
         </button>
 
-        {visiblePageButtons.map((page) => (
+        {visiblePageButtons.map(page => (
           <button
             onClick={() => onSwitchPage(page)}
             type="button"

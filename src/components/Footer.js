@@ -8,8 +8,8 @@ const Footer = ({
   lastUser,
   usersAmount,
   pagesAmount,
-  onSwitchPage,
   activePage,
+  onSwitchPage,
 }) => {
   const pageButtons = generatePageButtons(pagesAmount);
 

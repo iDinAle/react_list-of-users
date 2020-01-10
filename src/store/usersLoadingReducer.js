@@ -17,12 +17,12 @@ export const loadData = () => async(dispatch) => {
   try {
     const usersData = await getUsersFromServer();
 
-    usersData.map(user => ({
-      ...user,
-      id: +user.id,
-    }));
-
-    return dispatch(handleUsersLoadingSuccess(usersData));
+    return dispatch(handleUsersLoadingSuccess(
+      usersData.map(user => ({
+        ...user,
+        id: +user.id,
+      }))
+    ));
   } catch (e) {
     dispatch(handleUsersLoadingFail());
   }

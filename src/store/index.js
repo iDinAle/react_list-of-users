@@ -3,11 +3,14 @@ import thunk from 'redux-thunk';
 
 import usersLoadingReducer from './usersLoadingReducer';
 import sortingReducer from './sortingReducer';
+import paginationReducer from './paginationReducer';
 
 export const getIsLoading = state => state.usersLoading.isLoading;
 export const getHasError = state => state.usersLoading.hasError;
 export const getActiveColumn = state => state.sorting.activeColumn;
 export const getDirection = state => state.sorting.direction;
+export const getPage = state => state.pagination.page;
+export const getUsersPerPage = state => state.pagination.usersPerPage;
 export const getUsers = ({
   usersLoading: { users },
   sorting: { activeColumn, direction },
@@ -35,6 +38,7 @@ export const getUsers = ({
 const reducer = combineReducers({
   usersLoading: usersLoadingReducer,
   sorting: sortingReducer,
+  pagination: paginationReducer,
 })
 
 const store = createStore(reducer, applyMiddleware(thunk));

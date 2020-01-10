@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import UserRow from '../UserRow';
@@ -11,11 +11,17 @@ const HEADERS = {
   desc: 'Description',
 };
 
-const UsersTable = (
-  { users, activeColumn, direction, setActiveColumn, setDirection }
-) => {
-  const [page, setPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+const UsersTable = ({
+  users,
+  activeColumn,
+  direction,
+  setActiveColumn,
+  setDirection,
+  page,
+  usersPerPage,
+  setPage,
+  setUsersPerPage,
+}) => {
   const sortUsers = (clickedColumn) => {
     if (activeColumn !== clickedColumn) {
       setDirection('asc');
@@ -30,9 +36,9 @@ const UsersTable = (
   }
 
   const usersAmount = users.length;
-  const pagesAmount = Math.ceil(usersAmount / itemsPerPage);
-  const firstUser = (page - 1) * itemsPerPage + 1;
-  let lastUser = page * itemsPerPage;
+  const pagesAmount = Math.ceil(usersAmount / usersPerPage);
+  const firstUser = (page - 1) * usersPerPage + 1;
+  let lastUser = page * usersPerPage;
   const visibleUsers = users.slice(firstUser - 1, lastUser);
   lastUser = lastUser > usersAmount ? usersAmount : lastUser;
 

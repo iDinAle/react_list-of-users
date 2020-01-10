@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import {
+  getUsers,
   getActiveColumn,
   getDirection,
   getPage,
@@ -12,6 +13,7 @@ import { setQuery } from '../../store/queryReducer';
 import UsersTable from './UsersTable';
 
 const mapStateToProps = state => ({
+  users: getUsers(state),
   activeColumn: getActiveColumn(state),
   direction: getDirection(state),
   page: getPage(state),

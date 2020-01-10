@@ -9,6 +9,7 @@ import queryReducer from './queryReducer';
 
 export const getIsLoading = state => state.usersLoading.isLoading;
 export const getHasError = state => state.usersLoading.hasError;
+export const getIsLoaded = state => state.usersLoading.isLoaded;
 export const getActiveColumn = state => state.sorting.activeColumn;
 export const getDirection = state => state.sorting.direction;
 export const getPage = state => state.pagination.page;

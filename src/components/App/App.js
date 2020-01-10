@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import './App.scss';
 import UsersTable from '../UsersTable';
 
-const App = ({ users, isLoading, hasError, loadData }) => (
+const App = ({ isLoading, hasError, isLoaded, loadData }) => (
   <div className="App">
     <h1 className="main-title">Table of users</h1>
 
-    {users.length ? (
-      <UsersTable users={users} />
+    {isLoaded ? (
+      <UsersTable />
     ) : (
       <>
         <h3 className="message-title">
@@ -32,11 +32,9 @@ const App = ({ users, isLoading, hasError, loadData }) => (
 );
 
 App.propTypes = {
-  users: PropTypes.arrayOf(
-    PropTypes.object
-  ).isRequired,
   isLoading: PropTypes.bool.isRequired,
   hasError: PropTypes.bool.isRequired,
+  isLoaded: PropTypes.bool.isRequired,
   loadData: PropTypes.func.isRequired,
 };
 

@@ -32,6 +32,7 @@ const initialState = {
   users: [],
   isLoading: false,
   hasError: false,
+  isLoaded: false,
 };
 
 const usersLoadingReducer = (state = initialState, action) => {
@@ -48,6 +49,7 @@ const usersLoadingReducer = (state = initialState, action) => {
         ...state,
         users: action.users,
         isLoading: false,
+        isLoaded: true,
       };
 
     case USERS_LOADING_FAIL:

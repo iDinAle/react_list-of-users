@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const UsersRow = ({ user }) => (
+const UserRow = ({ user }) => (
   <tr>
     <td>{user.id}</td>
     <td>{user.name}</td>
@@ -10,11 +10,11 @@ const UsersRow = ({ user }) => (
   </tr>
 );
 
-UsersRow.propTypes = { user: PropTypes.shape({
-  id: PropTypes.string,
+UserRow.propTypes = { user: PropTypes.shape({
+  id: PropTypes.number,
   name: PropTypes.string,
   surname: PropTypes.string,
   desc: PropTypes.string,
 }).isRequired };
 
-export default UsersRow;
+export default UserRow;

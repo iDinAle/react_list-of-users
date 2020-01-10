@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './App.css';
-import UsersTable from '../UsersTable/UsersTable';
+import UsersTable from '../UsersTable';
 
 const App = ({ users, isLoading, hasError, loadData }) => (
   <div className="App">
@@ -12,7 +12,7 @@ const App = ({ users, isLoading, hasError, loadData }) => (
       <UsersTable users={users} />
     ) : (
       <>
-        <h2>{hasError ? 'Error occured!!!' : 'No users yet!'}</h2>
+        <h2>{hasError ? 'Something went wrong ...' : 'No users yet!'}</h2>
 
         <button
           className="load-btn"
@@ -21,7 +21,7 @@ const App = ({ users, isLoading, hasError, loadData }) => (
             await loadData();
           }}
         >
-          {isLoading ? 'Loading...' : 'Load users'}
+          {isLoading ? 'Loading ...' : 'Load users'}
         </button>
       </>
     )}

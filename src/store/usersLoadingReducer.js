@@ -15,7 +15,12 @@ export const loadData = () => async(dispatch) => {
   dispatch(startUsersLoading());
 
   try {
-    const usersData = await getUsersFromServer()
+    const usersData = await getUsersFromServer();
+
+    usersData.map(user => ({
+      ...user,
+      id: +user.id,
+    }));
 
     return dispatch(handleUsersLoadingSuccess(usersData));
   } catch (e) {

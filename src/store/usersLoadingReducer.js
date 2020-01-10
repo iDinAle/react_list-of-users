@@ -26,8 +26,6 @@ export const loadData = () => async(dispatch) => {
   } catch (e) {
     dispatch(handleUsersLoadingFail());
   }
-
-  return 1;
 };
 
 const initialState = {

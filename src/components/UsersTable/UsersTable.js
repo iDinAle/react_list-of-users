@@ -125,7 +125,6 @@ UsersTable.propTypes = {
   page: PropTypes.number.isRequired,
   usersPerPage: PropTypes.number.isRequired,
   setPage: PropTypes.func.isRequired,
-  setUsers: PropTypes.func.isRequired,
   setQuery: PropTypes.func.isRequired,
 };
 

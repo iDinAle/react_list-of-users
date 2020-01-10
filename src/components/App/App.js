@@ -22,6 +22,7 @@ const App = ({ users, isLoading, hasError, loadData }) => (
           onClick={async() => {
             await loadData();
           }}
+          disabled={isLoading}
         >
           {isLoading ? 'Loading ...' : 'Load users'}
         </button>

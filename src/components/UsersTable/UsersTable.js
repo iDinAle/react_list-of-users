@@ -69,7 +69,7 @@ const UsersTable = ({
   lastUser = lastUser > usersAmount ? usersAmount : lastUser;
 
   return (
-    <div>
+    <div className="table-wrapper">
       <Header
         onChangeUsersPerPage={changeUsersPerPage}
         onSearchUsers={searchUsers}
@@ -77,12 +77,13 @@ const UsersTable = ({
         selectValue={usersPerPage}
       />
 
-      <table>
+      <table className="table">
         <thead>
           <tr>
             {Object.keys(HEADERS).map(header => (
               <th
                 onClick={() => sortUsers(header)}
+                className="table__header"
                 key={header}
               >
                 {HEADERS[header]}

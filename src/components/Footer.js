@@ -33,9 +33,9 @@ const Footer = ({
         {`Showing ${firstUser} to ${lastUser} of ${usersAmount} entries`}
       </div>
 
-      <div className="table-pagination">
+      <div className="pagination">
         <button
-          className="table-pagination__prev-btn"
+          className="pagination__button pagination__button--control"
           type="button"
           onClick={() => onSwitchPage(1)}
         >
@@ -43,7 +43,7 @@ const Footer = ({
         </button>
 
         <button
-          className="table-pagination__prev-btn"
+          className="pagination__button pagination__button--control"
           type="button"
           onClick={() => onSwitchPage(
             activePage - 1 < 1 ? 1 : activePage - 1
@@ -57,13 +57,15 @@ const Footer = ({
             onClick={() => onSwitchPage(page)}
             type="button"
             key={page}
+            className={`pagination__button
+              ${page === activePage && "pagination__button--active"}`}
           >
             {page}
           </button>
         ))}
 
         <button
-          className="paginator__prev-btn"
+          className="pagination__button pagination__button--control"
           type="button"
           onClick={() => onSwitchPage(
             activePage + 1 > pagesAmount ? pagesAmount : activePage + 1
@@ -73,7 +75,7 @@ const Footer = ({
         </button>
 
         <button
-          className="paginator__prev-btn"
+          className="pagination__button pagination__button--control"
           type="button"
           onClick={() => onSwitchPage(pagesAmount)}
         >

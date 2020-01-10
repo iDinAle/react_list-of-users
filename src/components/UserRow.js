@@ -4,10 +4,10 @@ import { highlightText } from '../helpers/highlightText';
 
 const UserRow = ({ user, highlightedValue }) => (
   <tr>
-    <td>{highlightText(user.id, highlightedValue)}</td>
-    <td>{highlightText(user.name, highlightedValue)}</td>
-    <td>{highlightText(user.surname, highlightedValue)}</td>
-    <td>{highlightText(user.desc, highlightedValue)}</td>
+    <td className="table__cell">{highlightText(user.id, highlightedValue)}</td>
+    <td className="table__cell">{highlightText(user.name, highlightedValue)}</td>
+    <td className="table__cell">{highlightText(user.surname, highlightedValue)}</td>
+    <td className="table__cell">{highlightText(user.desc, highlightedValue)}</td>
   </tr>
 );
 

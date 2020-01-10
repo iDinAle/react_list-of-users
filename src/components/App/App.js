@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './App.css';
+import './App.scss';
 import UsersTable from '../UsersTable';
 
 const App = ({ users, isLoading, hasError, loadData }) => (
   <div className="App">
-    <h1>Table of users</h1>
+    <h1 className="main-title">Table of users</h1>
 
     {users.length ? (
       <UsersTable users={users} />
     ) : (
       <>
-        <h2>{hasError ? 'Something went wrong ...' : 'No users yet!'}</h2>
+        <h3 className="message-title">
+          {hasError ? 'Something went wrong ...' : 'No users yet!'}
+        </h3>
 
         <button
           className="load-btn"
